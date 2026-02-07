@@ -15,8 +15,6 @@
   --light:#ffffff;
   --gray:#555;
   --transition: all 0.3s ease;
-  --arrow-color: #000;
-  --arrow-hover: #0000ff;
 }
 
 *{
@@ -32,7 +30,6 @@ body{
   background:var(--light);
   color:var(--dark);
   line-height:1.6;
-  overflow-x: hidden;
 }
 
 .container{
@@ -112,7 +109,7 @@ nav a:hover{ color:var(--primary); }
   cursor:pointer;
 }
 
-/* HERO SECTION */
+/* HERO SECTION - FIXED ALIGNMENT */
 .hero{
   display: flex;
   justify-content: space-between;
@@ -120,148 +117,393 @@ nav a:hover{ color:var(--primary); }
   min-height: 80vh;
   gap: 60px;
 }
-.hero-text{ flex: 1; }
+
+.hero-text{
+  flex: 1;
+}
+
 .hero-text h1{ font-size:48px; line-height: 1.2; }
-.hero-text h2{ font-size:36px; margin:10px 0; }
+
+.hero-text h2{
+  font-size:36px;
+  margin:10px 0;
+}
+
 .hero-text h2 span{ color:var(--primary); }
-.hero-text p{ color:var(--gray); margin:20px 0 35px; font-size: 18px; }
-.hero-img{ flex: 1; display: flex; justify-content: flex-end; }
-.hero-img img{ width: 100%; max-width: 450px; height: auto; border-radius: 30px; transition: var(--transition); }
+
+.hero-text p{
+  color:var(--gray);
+  margin:20px 0 35px;
+  font-size: 18px;
+}
+
+/* HERO IMAGE - INCREASED SIZE & ALIGNMENT */
+.hero-img{
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-img img{
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  border-radius: 30px;
+  transition: var(--transition);
+}
 
 /* SKILLS */
 .skills{ max-width:700px; margin:auto; }
 .skill{ margin-bottom:20px; font-weight: 500; }
-.bar{ background:#eee; height:10px; border-radius:10px; margin-top:8px; }
-.bar div{ height:10px; background:var(--primary); border-radius:10px; }
-
-/* --- REBUILT CAROUSEL SYSTEM --- */
-
-.carousel-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    /* Prevents card clipping during hover lift */
-    padding-top: 20px; 
-    overflow: visible; 
+.bar{
+  background:#eee;
+  height:10px;
+  border-radius:10px;
+  margin-top:8px;
+}
+.bar div{
+  height:10px;
+  background:var(--primary);
+  border-radius:10px;
 }
 
-.carousel-viewport {
-    overflow: hidden; /* Only hide horizontal overflow */
-    width: 100%;
-    margin: 0 10px;
-    padding-bottom: 10px;
+/* ==================== NEW SERVICES SECTION ==================== */
+.services-section {
+  position: relative;
+  padding: 80px 0;
 }
 
-.carousel-track {
-    display: flex;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+.services-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+.services-carousel {
+  overflow: hidden;
+  position: relative;
+}
+
+.services-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  gap: 30px;
+  padding: 20px 0;
+}
+
+.service-card-new {
+  flex: 0 0 calc(33.333% - 20px);
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 40px 30px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.service-card-new:hover {
+  transform: translateY(-8px);
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 15px 30px rgba(142, 68, 173, 0.2);
+}
+
+.service-card-new h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.service-card-new p {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.service-card-new:hover p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border: 2px solid #222;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  color: #222;
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-arrow:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.arrow-left {
+  left: 0;
+}
+
+.arrow-right {
+  right: 0;
+}
+
+/* Mobile view for services */
+@media (max-width: 768px) {
+  .services-container {
+    padding: 0 20px;
+  }
+  
+  .service-card-new {
+    flex: 0 0 100%;
+  }
+  
+  .carousel-arrow {
+    display: none;
+  }
+  
+  .services-track {
     gap: 20px;
+  }
 }
 
-.arrow {
-    background: none;
-    border: none;
-    font-size: 35px;
-    color: var(--arrow-color);
-    cursor: pointer;
-    transition: color 0.3s;
-    user-select: none;
-    z-index: 50;
+/* ==================== NEW PROJECTS SECTION ==================== */
+.projects-section {
+  position: relative;
+  padding: 80px 0;
+  background: #f9f9f9;
 }
 
-.arrow:hover { color: var(--arrow-hover); }
-
-/* SERVICE & PROJECT COMMON CARD STYLE */
-.service-box, .project-card {
-    border: 2px solid #000 !important; /* Mandatory Black Border */
-    border-radius: 16px;
-    background: #fff;
-    transition: transform 0.3s ease, background 0.3s ease, filter 0.3s ease;
+.projects-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
 }
 
-/* SERVICE BOX SPECIFIC */
-.service-box {
-    flex: 0 0 calc(33.333% - 13.5px);
-    padding: 40px 25px;
-    text-align: center;
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 280px;
+.projects-carousel {
+  overflow: hidden;
+  position: relative;
 }
 
-.service-box h3 { color: var(--primary); margin-bottom: 15px; font-size: 20px; }
-.service-box p { font-size: 14px; color: #666; transition: var(--transition); }
-
-.service-box:hover {
-    background: var(--primary);
-    transform: translateY(-15px); /* Smooth Lift */
+.projects-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  gap: 30px;
+  padding: 20px 0;
 }
-.service-box:hover h3, .service-box:hover p { color: #fff; }
 
-/* PROJECT CARD SPECIFIC */
 .project-card {
-    flex: 0 0 calc(33.333% - 13.5px);
-    overflow: hidden;
-    text-align: center;
+  flex: 0 0 calc(33.333% - 20px);
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
 }
-
-.project-img-container {
-    width: 100%;
-    height: 220px;
-    overflow: hidden;
-    background: #f9f9f9;
-    border-bottom: 1px solid #000;
-}
-
-.project-img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.project-content { padding: 25px 15px; }
-.project-content h3 { font-size: 19px; margin-bottom: 20px; font-weight: 600; }
 
 .project-card:hover {
-    filter: invert(1);
-    transform: translateY(-15px); /* Smooth Lift */
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  filter: invert(1);
 }
 
-/* CONTACT SECTION */
-.contact-box{ display:grid; grid-template-columns: 1.2fr 0.8fr; gap:50px; align-items: start; }
-.contact-info p { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-.social-links { margin-top: 25px; display: flex; flex-direction: column; gap: 15px; }
-.social-item { text-decoration: none; color: var(--dark); display: flex; align-items: center; gap: 12px; padding: 12px 18px; border: 1px solid #eee; border-radius: 10px; transition: var(--transition); font-weight: 500; }
-.social-item i { font-size: 20px; color: var(--primary); }
-.social-item:hover { background: var(--primary); color: #fff; border-color: var(--primary); transform: translateX(5px); }
-.social-item:hover i { color: #fff; }
+.project-image {
+  height: 200px;
+  overflow: hidden;
+  background: #8e44ad;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+}
 
-input, textarea{ width:100%; padding:16px; border-radius:8px; border:1px solid #ddd; margin-bottom:15px; font-size:15px; outline-color: var(--primary); }
-textarea{ resize:none; height:150px; }
+.project-content {
+  padding: 25px;
+}
 
-footer{ background:var(--primary); color:#fff; text-align:center; padding:30px; margin-top: 50px; }
+.project-content h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
 
-/* RESPONSIVE DESIGN */
+.view-details-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: var(--primary);
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.view-details-btn:hover {
+  background: #6d2f8c;
+  transform: translateY(-2px);
+}
+
+/* Mobile view for projects */
+@media (max-width: 768px) {
+  .projects-container {
+    padding: 0 20px;
+  }
+  
+  .project-card {
+    flex: 0 0 100%;
+  }
+  
+  .carousel-arrow {
+    display: none;
+  }
+}
+
+/* Touch/swipe support */
+.services-track, .projects-track {
+  touch-action: pan-y;
+}
+
+/* CONTACT SECTION - NEW SOCIAL LINKS */
+.contact-box{
+  display:grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap:50px;
+  align-items: start;
+}
+
+.contact-info p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-links {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.social-item {
+    text-decoration: none;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.social-item i {
+    font-size: 20px;
+    color: var(--primary);
+}
+
+.social-item:hover {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+    transform: translateX(5px);
+}
+
+.social-item:hover i {
+    color: #fff;
+}
+
+input, textarea{
+  width:100%;
+  padding:16px;
+  border-radius:8px;
+  border:1px solid #ddd;
+  margin-bottom:15px;
+  font-size:15px;
+  outline-color: var(--primary);
+}
+
+textarea{
+  resize:none;
+  height:150px;
+}
+
+/* FOOTER */
+footer{
+  background:var(--primary);
+  color:#fff;
+  text-align:center;
+  padding:30px;
+  margin-top: 50px;
+}
+
+/* RESPONSIVE FIXES */
+@media(max-width:992px){
+    .hero-text h1 { font-size: 38px; }
+    .hero-img img { max-width: 350px; }
+}
+
 @media(max-width:768px){
-  nav ul{ position:absolute; top:70px; right:0; background:#fff; width:100%; flex-direction:column; align-items:center; display:none; padding:30px 0; border-bottom:1px solid #eee; }
+  nav ul{
+    position:absolute;
+    top:70px;
+    right:0;
+    background:#fff;
+    width:100%;
+    flex-direction:column;
+    align-items:center;
+    display:none;
+    padding:30px 0;
+    border-bottom:1px solid #eee;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+  }
+
   nav ul.active{ display:flex; }
   .hamburger{ display:block; }
-  .hero{ flex-direction: column-reverse; text-align:center; padding: 40px 0; gap: 30px; }
-  .hero-img img { max-width: 300px; }
-  .contact-box{ grid-template-columns:1fr; }
-  
-  .arrow { display: none; }
-  .service-box, .project-card { 
-      flex: 0 0 100%; 
+
+  .hero{
+    flex-direction: column-reverse;
+    text-align:center;
+    padding: 40px 0;
+    gap: 30px;
   }
-  .carousel-viewport { overflow-x: auto; scroll-snap-type: x mandatory; margin: 0; padding-top: 20px;}
-  .carousel-track { gap: 0; }
-  .service-box, .project-card { scroll-snap-align: center; }
+
+  .hero-img{ justify-content: center; }
+  .hero-img img { max-width: 300px; }
+
+  .contact-box{ grid-template-columns:1fr; }
+  section{ padding:60px 0; }
+  
+  /* Adjust section spacing on mobile */
+  .services-section, .projects-section {
+    padding: 60px 0;
+  }
 }
 </style>
 </head>
@@ -271,15 +513,17 @@ footer{ background:var(--primary); color:#fff; text-align:center; padding:30px; 
 <header>
   <div class="container nav">
     <div class="logo">Farooq</div>
+
     <nav>
       <ul id="menu">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Projects</a></li>
+        <li><a href="#services-new">Services</a></li>
+        <li><a href="#portfolio-new">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
+
     <a href="https://drive.google.com/file/d/1cychTmTKu35IPrTqI-5I1R9hijGjqEVf/view?usp=sharing" class="btn" target="_blank">Download CV</a>
     <div class="hamburger" onclick="toggleMenu()">☰</div>
   </div>
@@ -311,92 +555,49 @@ footer{ background:var(--primary); color:#fff; text-align:center; padding:30px; 
   </div>
 </section>
 
-<section id="services">
+<!-- ==================== NEW SERVICES SECTION ==================== -->
+<section id="services-new" class="services-section">
   <div class="container">
     <h2 class="section-title">My Services</h2>
-    <div class="carousel-wrapper">
-      <button class="arrow" onclick="moveSlide('services', -1)">&#10094;</button>
-      <div class="carousel-viewport" id="services-viewport">
-        <div class="carousel-track" id="services-track">
-          <a href="mailto:engrmfarooqahmad@gmail.com" class="service-box">
-            <h3>Web Design</h3>
-            <p>As A Talented Web Designer, I Specialize In Creating Visually Stunning And User-Friendly Websites. With A Focus On Both Aesthetics And Functionality.</p>
-          </a>
-          <a href="mailto:engrmfarooqahmad@gmail.com" class="service-box">
-            <h3>Graphic Design</h3>
-            <p>I Am A Skilled Graphic Designer Offering Creative Solutions That Captivate Audiences With A Keen Eye For Detail And A Passion For Visual Story Telling.</p>
-          </a>
-          <a href="mailto:engrmfarooqahmad@gmail.com" class="service-box">
-            <h3>UI UX Design</h3>
-            <p>I Am A Skilled Graphic Designer Offering Creative Solutions That Captivate Audiences With A Keen Eye For Detail And A Passion For Visual Story Telling.</p>
-          </a>
-          <a href="mailto:engrmfarooqahmad@gmail.com" class="service-box">
-            <h3>App Design</h3>
-            <p>I Am A Proficient App Designer Specializing In Crafting Sleek And User-Friendly Mobile Experiences.</p>
-          </a>
-          <a href="mailto:engrmfarooqahmad@gmail.com" class="service-box">
-            <h3>Linux Administration</h3>
-            <p>System Management, Server Configuration, And Performance Optimization.</p>
-          </a>
+    <div class="services-container">
+      <div class="carousel-arrow arrow-left" onclick="scrollServices(-1)">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+      <div class="carousel-arrow arrow-right" onclick="scrollServices(1)">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="services-carousel">
+        <div class="services-track" id="servicesTrack">
+          <!-- Service cards will be inserted by JavaScript -->
         </div>
       </div>
-      <button class="arrow" onclick="moveSlide('services', 1)">&#10095;</button>
     </div>
   </div>
 </section>
 
-<section id="portfolio">
+<!-- ==================== NEW PROJECTS SECTION ==================== -->
+<section id="portfolio-new" class="projects-section">
   <div class="container">
     <h2 class="section-title">Latest Projects</h2>
-    <div class="carousel-wrapper">
-      <button class="arrow" onclick="moveSlide('projects', -1)">&#10094;</button>
-      <div class="carousel-viewport" id="projects-viewport">
-        <div class="carousel-track" id="projects-track">
-          <div class="project-card">
-            <div class="project-img-container"><img src="https://raw.githubusercontent.com/M-Farooq-Ahmad/images/main/friend.jpg" alt="Friend's Portfolio"></div>
-            <div class="project-content">
-              <h3>Friend's Portfolio</h3>
-              <a href="https://www.figma.com/design/nygRfTqoQOtLKCYIMri3kq/Hassan-Ali-Portfolio?node-id=4197-2&t=BnSx5bqZtTUolo1W-1" target="_blank" class="btn">View Details</a>
-            </div>
-          </div>
-          <div class="project-card">
-            <div class="project-img-container"><img src="https://raw.githubusercontent.com/M-Farooq-Ahmad/images/main/food.jpg" alt="Food App"></div>
-            <div class="project-content">
-              <h3>Food App</h3>
-              <a href="https://www.figma.com/design/gGNoz3cJn51dNnxGoXalhA/Foods?node-id=0-1&t=aEvm8ceEA0Nll3s6-1" target="_blank" class="btn">View Details</a>
-            </div>
-          </div>
-          <div class="project-card">
-            <div class="project-img-container"><img src="https://raw.githubusercontent.com/M-Farooq-Ahmad/images/main/myportfolio.jpg" alt="My Portfolio"></div>
-            <div class="project-content">
-              <h3>My Portfolio</h3>
-              <a href="https://www.figma.com/design/eumb6reWfEw5whNKfMNP1a/Farooq-portfolio?node-id=175-7&t=wSxjDKjrwSJ8aMAt-1" target="_blank" class="btn">View Details</a>
-            </div>
-          </div>
-          <div class="project-card">
-            <div class="project-img-container"><img src="https://raw.githubusercontent.com/M-Farooq-Ahmad/images/main/bike%20shopping%20app.jpg" alt="Bike Shopping App"></div>
-            <div class="project-content">
-              <h3>Bike Shopping App</h3>
-              <a href="https://www.figma.com/design/erXw5uf6pbzMfY8ks2PObm/Bike-Shopping-App?node-id=1-40&t=qQ9K57BWiSxRPAXb-1" target="_blank" class="btn">View Details</a>
-            </div>
-          </div>
-          <div class="project-card">
-            <div class="project-img-container"><img src="https://raw.githubusercontent.com/M-Farooq-Ahmad/images/main/company.jpg" alt="Company Web"></div>
-            <div class="project-content">
-              <h3>Company Web</h3>
-              <a href="https://www.figma.com/design/uljLWbcGlLvr9khAwIZhK0/snovatek?node-id=2395-3&t=Nw438LQkEffP6oEc-1" target="_blank" class="btn">View Details</a>
-            </div>
-          </div>
+    <div class="projects-container">
+      <div class="carousel-arrow arrow-left" onclick="scrollProjects(-1)">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+      <div class="carousel-arrow arrow-right" onclick="scrollProjects(1)">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="projects-carousel">
+        <div class="projects-track" id="projectsTrack">
+          <!-- Project cards will be inserted by JavaScript -->
         </div>
       </div>
-      <button class="arrow" onclick="moveSlide('projects', 1)">&#10095;</button>
     </div>
   </div>
 </section>
 
 <section id="contact">
   <div class="container">
-    <h2 class="section-title">Let’s Make Something Together</h2>
+    <h2 class="section-title">Let's Make Something Together</h2>
     <div class="contact-box">
       <form onsubmit="sendMail(); return false;">
         <input type="text" id="name" placeholder="Your Name" required>
@@ -404,8 +605,10 @@ footer{ background:var(--primary); color:#fff; text-align:center; padding:30px; 
         <textarea id="message" placeholder="Your Message" required></textarea>
         <button type="submit" class="btn">Send Message</button>
       </form>
+
        <div class="contact-info">
         <p><i class="fas fa-phone" style="color:var(--primary)"></i> <strong>Phone:</strong> +92 314 1683402</p>
+         
         <div class="social-links">
             <a href="https://wa.me/923141683402" class="social-item" target="_blank">
                 <i class="fab fa-whatsapp"></i> WhatsApp
@@ -418,6 +621,7 @@ footer{ background:var(--primary); color:#fff; text-align:center; padding:30px; 
             </a>
             <a href="#" onclick="openGmail(); return false;" class="social-item">
                 <i class="fas fa-at"></i> Gmail
+              
             </a>
         </div>
       </div>
@@ -430,71 +634,235 @@ footer{ background:var(--primary); color:#fff; text-align:center; padding:30px; 
 </footer>
 
 <script>
+// Navigation menu toggle
 function toggleMenu(){
   document.getElementById("menu").classList.toggle("active");
 }
 
+// Email functions
 function openGmail(){
-  window.open("mailto:engrmfarooqahmad@gmail.com","_self");
+  window.open("https://mail.google.com/mail/?view=cm&fs=1&to=engrmfarooqahmad@gmail.com","_blank");
 }
 
 function sendMail(){
   let name=document.getElementById("name").value;
   let email=document.getElementById("email").value;
   let message=document.getElementById("message").value;
-  window.location.href = "mailto:engrmfarooqahmad@gmail.com?subject=Contact from "+name+"&body="+message;
+
+  let gmailURL=
+    "https://mail.google.com/mail/?view=cm&fs=1"+
+    "&to=engrmfarooqahmad@gmail.com"+
+    "&su=Portfolio Contact from "+encodeURIComponent(name)+
+    "&body="+encodeURIComponent("Name: "+name+"\nEmail: "+email+"\n\n"+message);
+
+  window.open(gmailURL,"_blank");
 }
 
-/* SEAMLESS CIRCULAR CAROUSEL LOGIC */
-const initCarousel = (id) => {
-    const track = document.getElementById(id + '-track');
-    const items = Array.from(track.children);
-    
-    // Triple the items to allow seamless bi-directional scrolling
-    items.forEach(item => track.appendChild(item.cloneNode(true)));
-    items.forEach(item => track.prepend(item.cloneNode(true)));
+// ==================== SERVICES SECTION LOGIC ====================
+const services = [
+  {
+    title: "Web Design",
+    description: "As a Talented Web Designer, I Specialize In Creating Visually Stunning And User-Friendly Websites. With A Focus On Both Aesthetics And Functionality.",
+    emailSubject: "Web Design Service Inquiry"
+  },
+  {
+    title: "Graphic Design",
+    description: "I Am A Skilled Graphic Designer Offering Creative Solutions That Captivate Audiences. With A Keen Eye For Detail And A Passion For Visual Story Telling.",
+    emailSubject: "Graphic Design Service Inquiry"
+  },
+  {
+    title: "UI UX Design",
+    description: "I Am A Skilled Graphic Designer Offering Creative Solutions That Captivate Audiences. With A Keen Eye For Detail And A Passion For Visual Story Telling.",
+    emailSubject: "UI/UX Design Service Inquiry"
+  },
+  {
+    title: "App Design",
+    description: "I Am A Proficient App Designer Specializing In Crafting Sleek And User-Friendly Mobile Experiences.",
+    emailSubject: "App Design Service Inquiry"
+  },
+  {
+    title: "Linux Administration",
+    description: "System Management, Server Configuration, And Performance Optimization.",
+    emailSubject: "Linux Administration Service Inquiry"
+  }
+];
 
-    let currentIndex = items.length;
-    let isMoving = false;
+let currentServiceIndex = 0;
 
-    const update = (animate = true) => {
-        const width = track.children[0].offsetWidth + 20;
-        track.style.transition = animate ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none';
-        track.style.transform = `translateX(-${currentIndex * width}px)`;
+function initServices() {
+  const track = document.getElementById('servicesTrack');
+  track.innerHTML = '';
+  
+  // Duplicate services for seamless looping
+  const allServices = [...services, ...services, ...services];
+  
+  allServices.forEach((service, index) => {
+    const card = document.createElement('div');
+    card.className = 'service-card-new';
+    card.innerHTML = `
+      <h3>${service.title}</h3>
+      <p>${service.description}</p>
+    `;
+    card.onclick = () => {
+      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=engrmfarooqahmad@gmail.com&su=${encodeURIComponent(service.emailSubject)}`, "_blank");
     };
-
-    // Correct jump to start/end
-    track.addEventListener('transitionend', () => {
-        isMoving = false;
-        if (currentIndex >= items.length * 2) {
-            currentIndex = items.length;
-            update(false);
-        } else if (currentIndex < items.length) {
-            currentIndex = items.length * 2 - 1;
-            update(false);
-        }
-    });
-
-    window.addEventListener('resize', () => update(false));
-    update(false);
-
-    return {
-        next: (dir) => {
-            if (isMoving) return;
-            isMoving = true;
-            currentIndex += dir;
-            update(true);
-        }
-    };
-};
-
-const sCarousel = initCarousel('services');
-const pCarousel = initCarousel('projects');
-
-function moveSlide(type, dir) {
-    if (type === 'services') sCarousel.next(dir);
-    else pCarousel.next(dir);
+    track.appendChild(card);
+  });
+  
+  updateServicesPosition();
 }
+
+function updateServicesPosition() {
+  const track = document.getElementById('servicesTrack');
+  const cardWidth = document.querySelector('.service-card-new').offsetWidth + 30; // width + gap
+  const offset = -currentServiceIndex * cardWidth;
+  track.style.transform = `translateX(${offset}px)`;
+}
+
+function scrollServices(direction) {
+  currentServiceIndex += direction;
+  
+  // Circular looping
+  if (currentServiceIndex >= services.length) currentServiceIndex = 0;
+  if (currentServiceIndex < 0) currentServiceIndex = services.length - 1;
+  
+  updateServicesPosition();
+}
+
+// ==================== PROJECTS SECTION LOGIC ====================
+const projects = [
+  {
+    title: "Friend's Portfolio",
+    imageText: "Friend's Portfolio",
+    githubImage: "friend.jpg",
+    link: "https://www.figma.com/design/nygRfTqoQOtLKCYIMri3kq/Hassan-Ali-Portfolio?node-id=4197-2&t=BnSx5bqZtTUolo1W-1"
+  },
+  {
+    title: "Food App",
+    imageText: "Food App",
+    githubImage: "food.jpg",
+    link: "https://www.figma.com/design/gGNoz3cJn51dNnxGoXalhA/Foods?node-id=0-1&t=aEvm8ceEA0Nll3s6-1"
+  },
+  {
+    title: "My Portfolio",
+    imageText: "My Portfolio",
+    githubImage: "myportfolio.jpg",
+    link: "https://www.figma.com/design/eumb6reWfEw5whNKfMNP1a/Farooq-portfolio?node-id=175-7&t=wSxjDKjrwSJ8aMAt-1"
+  },
+  {
+    title: "Bike Shopping App",
+    imageText: "Bike Shopping App",
+    githubImage: "bike shopping app.jpg",
+    link: "https://www.figma.com/design/erXw5uf6pbzMfY8ks2PObm/Bike-Shopping-App?node-id=1-40&t=qQ9K57BWiSxRPAXb-1"
+  },
+  {
+    title: "Company Website",
+    imageText: "Company Website",
+    githubImage: "company.jpg",
+    link: "https://www.figma.com/design/uljLWbcGlLvr9khAwIZhK0/snovatek?node-id=2395-3&t=Nw438LQkEffP6oEc-1"
+  }
+];
+
+let currentProjectIndex = 0;
+
+function initProjects() {
+  const track = document.getElementById('projectsTrack');
+  track.innerHTML = '';
+  
+  // Duplicate projects for seamless looping
+  const allProjects = [...projects, ...projects, ...projects];
+  
+  allProjects.forEach((project, index) => {
+    const card = document.createElement('div');
+    card.className = 'project-card';
+    card.innerHTML = `
+      <div class="project-image">
+        ${project.imageText}
+      </div>
+      <div class="project-content">
+        <h3>${project.title}</h3>
+        <button class="view-details-btn" onclick="window.open('${project.link}', '_blank')">View Details</button>
+      </div>
+    `;
+    track.appendChild(card);
+  });
+  
+  updateProjectsPosition();
+}
+
+function updateProjectsPosition() {
+  const track = document.getElementById('projectsTrack');
+  const cardWidth = document.querySelector('.project-card').offsetWidth + 30; // width + gap
+  const offset = -currentProjectIndex * cardWidth;
+  track.style.transform = `translateX(${offset}px)`;
+}
+
+function scrollProjects(direction) {
+  currentProjectIndex += direction;
+  
+  // Circular looping
+  if (currentProjectIndex >= projects.length) currentProjectIndex = 0;
+  if (currentProjectIndex < 0) currentProjectIndex = projects.length - 1;
+  
+  updateProjectsPosition();
+}
+
+// ==================== TOUCH SWIPE SUPPORT ====================
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleTouchStart(e) {
+  touchStartX = e.changedTouches[0].screenX;
+}
+
+function handleTouchEnd(e) {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+}
+
+function handleSwipe() {
+  const swipeThreshold = 50;
+  const diff = touchStartX - touchEndX;
+  
+  if (Math.abs(diff) > swipeThreshold) {
+    if (diff > 0) {
+      // Swipe left - next
+      scrollServices(1);
+      scrollProjects(1);
+    } else {
+      // Swipe right - previous
+      scrollServices(-1);
+      scrollProjects(-1);
+    }
+  }
+}
+
+// ==================== INITIALIZE EVERYTHING ====================
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize both sections
+  initServices();
+  initProjects();
+  
+  // Add touch event listeners for mobile swipe
+  const servicesTrack = document.getElementById('servicesTrack');
+  const projectsTrack = document.getElementById('projectsTrack');
+  
+  servicesTrack.addEventListener('touchstart', handleTouchStart);
+  servicesTrack.addEventListener('touchend', handleTouchEnd);
+  
+  projectsTrack.addEventListener('touchstart', handleTouchStart);
+  projectsTrack.addEventListener('touchend', handleTouchEnd);
+  
+  // Auto-rotate for demonstration (optional, can be removed)
+  // setInterval(() => scrollServices(1), 5000);
+  // setInterval(() => scrollProjects(1), 5500);
+});
+
+// Handle window resize
+window.addEventListener('resize', function() {
+  updateServicesPosition();
+  updateProjectsPosition();
+});
 </script>
 
 </body>
