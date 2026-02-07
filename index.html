@@ -166,262 +166,126 @@ nav a:hover{ color:var(--primary); }
   border-radius:10px;
 }
 
-/* ==================== NEW SERVICES SECTION ==================== */
-.services-section {
-  position: relative;
-  padding: 80px 0;
+/* SERVICES */
+.service-section{
+  position:relative;
 }
 
-.services-container {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 60px;
+.service-container{
+  display:flex;
+  gap:25px;
+  overflow:hidden;
+  scroll-behavior:smooth;
 }
 
-.services-carousel {
-  overflow: hidden;
-  position: relative;
+.service-card{
+  flex:0 0 calc(33.333% - 16px);
+  border:1px solid #000;
+  border-radius:16px;
+  background:#fff;
+  padding:40px 30px;
+  cursor:pointer;
+  transition: var(--transition);
+  position:relative;
+  min-height:180px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
-.services-track {
-  display: flex;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  gap: 30px;
+.service-card small{
+  display:block;
+  margin-top:12px;
+  color:#777;
 }
 
-.service-card-new {
-  flex: 0 0 calc(33.333% - 20px);
-  background: #fff;
-  border: 1px solid #eee;
-  border-radius: 16px;
-  padding: 40px 30px;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  min-height: 220px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  overflow: visible;
+.service-card:hover{
+  background:var(--primary);
+  color:#fff;
+  transform:translateY(-10px);
 }
 
-.service-card-new:hover {
-  transform: translateY(-8px);
-  background: var(--primary);
-  color: #fff;
-  box-shadow: 0 15px 30px rgba(142, 68, 173, 0.2);
+.service-card:hover small{ color:#f1f1f1; }
+
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:#000;
+  color:#fff;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+  transition: var(--transition);
+  z-index:10;
 }
 
-.service-card-new h3 {
-  font-size: 22px;
-  margin-bottom: 10px;
-  font-weight: 600;
+.arrow:hover{ background:#3498db; }
+
+.arrow-left{ left:-20px; }
+.arrow-right{ right:-20px; }
+
+/* PROJECTS */
+.project-section{ position:relative; }
+
+.project-container{
+  display:flex;
+  gap:25px;
+  overflow:hidden;
+  scroll-behavior:smooth;
 }
 
-.service-card-new p {
-  color: #666;
-  font-size: 15px;
-  line-height: 1.5;
+.project-card{
+  flex:0 0 calc(33.333% - 16px);
+  border:1px solid #000;
+  border-radius:16px;
+  text-align:center;
+  cursor:pointer;
+  transition: var(--transition);
+  background:#fff;
+  min-height:250px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:20px;
+  background-size:cover;
+  background-position:center;
+  color:#222;
 }
 
-.service-card-new:hover p {
-  color: rgba(255, 255, 255, 0.9);
+.project-card:hover{
+  background:var(--primary);
+  color:#fff;
+  transform:translateY(-10px);
 }
 
-.carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
-  background: #fff;
-  border: 2px solid #222;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 20px;
-  color: #222;
-  transition: all 0.3s ease;
-  z-index: 10;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.project-card h3{
+  margin-top:15px;
+  font-size:18px;
+  font-weight:600;
 }
 
-.carousel-arrow:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-  transform: translateY(-50%) scale(1.1);
+.project-card button{
+  margin-top:15px;
+  padding:10px 20px;
+  border:none;
+  border-radius:8px;
+  background:#fff;
+  color:var(--primary);
+  cursor:pointer;
+  transition: var(--transition);
 }
 
-.arrow-left {
-  left: 0;
+.project-card:hover button{
+  background:#fff;
+  color:var(--primary);
 }
 
-.arrow-right {
-  right: 0;
-}
-
-/* ==================== NEW PROJECTS SECTION ==================== */
-.projects-section {
-  position: relative;
-  padding: 80px 0;
-  background: #f9f9f9;
-}
-
-.projects-container {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 60px;
-}
-
-.projects-carousel {
-  overflow: hidden;
-  position: relative;
-}
-
-.projects-track {
-  display: flex;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  gap: 30px;
-}
-
-.project-card {
-  flex: 0 0 calc(33.333% - 20px);
-  background: #fff;
-  border-radius: 16px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  border: 1px solid #eee;
-  position: relative;
-}
-
-.project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  filter: invert(1);
-}
-
-.project-image {
-  height: 200px;
-  overflow: hidden;
-  background: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.project-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.project-card:hover .project-image img {
-  transform: scale(1.05);
-}
-
-.project-content {
-  padding: 25px;
-  background: white;
-}
-
-.project-content h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
-
-.view-details-btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
-  background: var(--primary);
-  color: white;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.view-details-btn:hover {
-  background: #6d2f8c;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(142, 68, 173, 0.3);
-}
-
-/* Responsive Design */
-@media (max-width: 992px) {
-  .hero-text h1 { font-size: 38px; }
-  .hero-img img { max-width: 350px; }
-  
-  .service-card-new,
-  .project-card {
-    flex: 0 0 calc(50% - 20px);
-  }
-}
-
-@media (max-width: 768px) {
-  nav ul{
-    position:absolute;
-    top:70px;
-    right:0;
-    background:#fff;
-    width:100%;
-    flex-direction:column;
-    align-items:center;
-    display:none;
-    padding:30px 0;
-    border-bottom:1px solid #eee;
-    box-shadow: 0 10px 10px rgba(0,0,0,0.05);
-  }
-
-  nav ul.active{ display:flex; }
-  .hamburger{ display:block; }
-
-  .hero{
-    flex-direction: column-reverse;
-    text-align:center;
-    padding: 40px 0;
-    gap: 30px;
-  }
-
-  .hero-img{ justify-content: center; }
-  .hero-img img { max-width: 300px; }
-
-  .contact-box{ grid-template-columns:1fr; }
-  section{ padding:60px 0; }
-  
-  .services-container,
-  .projects-container {
-    padding: 0 20px;
-  }
-  
-  .service-card-new,
-  .project-card {
-    flex: 0 0 100%;
-  }
-  
-  .carousel-arrow {
-    display: none;
-  }
-  
-  .services-section,
-  .projects-section {
-    padding: 60px 0;
-  }
-}
-
-/* CONTACT SECTION */
+/* CONTACT */
 .contact-box{
   display:grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -495,25 +359,63 @@ footer{
   padding:30px;
   margin-top: 50px;
 }
+
+/* RESPONSIVE */
+@media(max-width:992px){
+  .hero-text h1 { font-size: 38px; }
+  .hero-img img { max-width: 350px; }
+}
+
+@media(max-width:768px){
+  nav ul{
+    position:absolute;
+    top:70px;
+    right:0;
+    background:#fff;
+    width:100%;
+    flex-direction:column;
+    align-items:center;
+    display:none;
+    padding:30px 0;
+    border-bottom:1px solid #eee;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+  }
+
+  nav ul.active{ display:flex; }
+  .hamburger{ display:block; }
+
+  .hero{
+    flex-direction: column-reverse;
+    text-align:center;
+    padding: 40px 0;
+    gap: 30px;
+  }
+
+  .hero-img{ justify-content: center; }
+  .hero-img img { max-width: 300px; }
+
+  .contact-box{ grid-template-columns:1fr; }
+  section{ padding:60px 0; }
+
+  .service-card{ flex:0 0 100%; }
+  .project-card{ flex:0 0 100%; }
+}
 </style>
 </head>
 
 <body>
-
 <header>
   <div class="container nav">
     <div class="logo">Farooq</div>
-
     <nav>
       <ul id="menu">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#services-new">Services</a></li>
-        <li><a href="#portfolio-new">Projects</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-
     <a href="https://drive.google.com/file/d/1cychTmTKu35IPrTqI-5I1R9hijGjqEVf/view?usp=sharing" class="btn" target="_blank">Download CV</a>
     <div class="hamburger" onclick="toggleMenu()">☰</div>
   </div>
@@ -545,41 +447,48 @@ footer{
   </div>
 </section>
 
-<!-- ==================== NEW SERVICES SECTION ==================== -->
-<section id="services-new" class="services-section">
+<!-- MY SERVICES SECTION -->
+<section id="services" class="service-section">
   <div class="container">
     <h2 class="section-title">My Services</h2>
-    <div class="services-container">
-      <div class="carousel-arrow arrow-left" onclick="scrollServices(-1)">
-        <i class="fas fa-chevron-left"></i>
-      </div>
-      <div class="carousel-arrow arrow-right" onclick="scrollServices(1)">
-        <i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="services-carousel">
-        <div class="services-track" id="servicesTrack">
-          <!-- Service cards will be inserted by JavaScript -->
-        </div>
-      </div>
+    <div class="arrow arrow-left" onclick="scrollService(-1)"><i class="fas fa-chevron-left"></i></div>
+    <div class="arrow arrow-right" onclick="scrollService(1)"><i class="fas fa-chevron-right"></i></div>
+    <div class="service-container" id="serviceContainer">
+      <div class="service-card" onclick="openGmail()">Graphic Design<small>Creative branding and visual design solutions.</small></div>
+      <div class="service-card" onclick="openGmail()">UI / UX Design<small>User-centered interfaces for web & mobile.</small></div>
+      <div class="service-card" onclick="openGmail()">Web Design<small>Modern, responsive website designs.</small></div>
+      <div class="service-card" onclick="openGmail()">App Design<small>Clean and functional mobile app UI.</small></div>
+      <div class="service-card" onclick="openGmail()">Video Editing<small>Professional video production and editing.</small></div>
     </div>
   </div>
 </section>
 
-<!-- ==================== NEW PROJECTS SECTION ==================== -->
-<section id="portfolio-new" class="projects-section">
+<!-- PROJECTS SECTION -->
+<section id="portfolio" class="project-section">
   <div class="container">
     <h2 class="section-title">Latest Projects</h2>
-    <div class="projects-container">
-      <div class="carousel-arrow arrow-left" onclick="scrollProjects(-1)">
-        <i class="fas fa-chevron-left"></i>
+    <div class="arrow arrow-left" onclick="scrollProject(-1)"><i class="fas fa-chevron-left"></i></div>
+    <div class="arrow arrow-right" onclick="scrollProject(1)"><i class="fas fa-chevron-right"></i></div>
+    <div class="project-container" id="projectContainer">
+      <div class="project-card" style="background-image:url('food-app.jpg')" onclick="openLink('https://www.figma.com/design/gGNoz3cJn51dNnxGoXalhA/Foods')">
+        <h3>Food App</h3>
+        <button>View Details</button>
       </div>
-      <div class="carousel-arrow arrow-right" onclick="scrollProjects(1)">
-        <i class="fas fa-chevron-right"></i>
+      <div class="project-card" style="background-image:url('bike-shopping-app.jpg')" onclick="openLink('https://www.figma.com/design/erXw5uf6pbzMfY8ks2PObm/Bike-Shopping-App')">
+        <h3>Bike Shopping App</h3>
+        <button>View Details</button>
       </div>
-      <div class="projects-carousel">
-        <div class="projects-track" id="projectsTrack">
-          <!-- Project cards will be inserted by JavaScript -->
-        </div>
+      <div class="project-card" style="background-image:url('my-portfolio.jpg')" onclick="openLink('https://www.figma.com/design/eumb6reWfEw5whNKfMNP1a/Farooq-portfolio')">
+        <h3>My Portfolio</h3>
+        <button>View Details</button>
+      </div>
+      <div class="project-card" style="background-image:url('company-website.jpg')" onclick="openLink('https://www.figma.com/design/uljLWbcGlLvr9khAwIZhK0/snovatek')">
+        <h3>Company Website</h3>
+        <button>View Details</button>
+      </div>
+      <div class="project-card" style="background-image:url('friend-portfolio.jpg')" onclick="openLink('https://www.figma.com/design/nygRfTqoQOtLKCYIMri3kq/Hassan-Ali-Portfolio')">
+        <h3>Friend Portfolio</h3>
+        <button>View Details</button>
       </div>
     </div>
   </div>
@@ -587,7 +496,7 @@ footer{
 
 <section id="contact">
   <div class="container">
-    <h2 class="section-title">Let's Make Something Together</h2>
+    <h2 class="section-title">Let’s Make Something Together</h2>
     <div class="contact-box">
       <form onsubmit="sendMail(); return false;">
         <input type="text" id="name" placeholder="Your Name" required>
@@ -598,7 +507,7 @@ footer{
 
        <div class="contact-info">
         <p><i class="fas fa-phone" style="color:var(--primary)"></i> <strong>Phone:</strong> +92 314 1683402</p>
-         
+        
         <div class="social-links">
             <a href="https://wa.me/923141683402" class="social-item" target="_blank">
                 <i class="fab fa-whatsapp"></i> WhatsApp
@@ -623,16 +532,22 @@ footer{
 </footer>
 
 <script>
-// Navigation menu toggle
+// MENU TOGGLE
 function toggleMenu(){
   document.getElementById("menu").classList.toggle("active");
 }
 
-// Email functions
+// OPEN LINKS
+function openLink(url){
+  window.open(url,"_blank");
+}
+
+// OPEN GMAIL
 function openGmail(){
   window.open("https://mail.google.com/mail/?view=cm&fs=1&to=engrmfarooqahmad@gmail.com","_blank");
 }
 
+// SEND MAIL FORM
 function sendMail(){
   let name=document.getElementById("name").value;
   let email=document.getElementById("email").value;
@@ -647,310 +562,9 @@ function sendMail(){
   window.open(gmailURL,"_blank");
 }
 
-// ==================== SERVICES SECTION LOGIC ====================
-const services = [
-  {
-    title: "Web Design",
-    description: "As a Talented Web Designer, I Specialize In Creating Visually Stunning And User-Friendly Websites. With A Focus On Both Aesthetics And Functionality.",
-    emailSubject: "Web Design Service Inquiry"
-  },
-  {
-    title: "Graphic Design",
-    description: "I Am A Skilled Graphic Designer Offering Creative Solutions That Captivate Audiences. With A Keen Eye For Detail And A Passion For Visual Story Telling.",
-    emailSubject: "Graphic Design Service Inquiry"
-  },
-  {
-    title: "UI UX Design",
-    description: "I Am A Skilled Graphic Designer Offering Creative Solutions That Captivate Audiences. With A Keen Eye For Detail And A Passion For Visual Story Telling.",
-    emailSubject: "UI/UX Design Service Inquiry"
-  },
-  {
-    title: "App Design",
-    description: "I Am A Proficient App Designer Specializing In Crafting Sleek And User-Friendly Mobile Experiences.",
-    emailSubject: "App Design Service Inquiry"
-  },
-  {
-    title: "Linux Administration",
-    description: "System Management, Server Configuration, And Performance Optimization.",
-    emailSubject: "Linux Administration Service Inquiry"
-  }
-];
-
-let servicesCarousel;
-let servicesTrack;
-let serviceCards;
-let serviceCardWidth;
-let servicesCurrentIndex = 0;
-let servicesIsAnimating = false;
-
-function initServices() {
-  servicesCarousel = document.querySelector('.services-carousel');
-  servicesTrack = document.getElementById('servicesTrack');
-  
-  // Clear and build the track with duplicated items for seamless looping
-  servicesTrack.innerHTML = '';
-  
-  // Add extra copies at beginning and end for seamless looping
-  const servicesToShow = [...services, ...services, ...services];
-  
-  servicesToShow.forEach((service, index) => {
-    const card = document.createElement('div');
-    card.className = 'service-card-new';
-    card.innerHTML = `
-      <h3>${service.title}</h3>
-      <p>${service.description}</p>
-    `;
-    card.onclick = () => {
-      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=engrmfarooqahmad@gmail.com&su=${encodeURIComponent(service.emailSubject)}`, "_blank");
-    };
-    servicesTrack.appendChild(card);
-  });
-  
-  serviceCards = document.querySelectorAll('.service-card-new');
-  updateServicesCarousel();
-}
-
-function updateServicesCarousel() {
-  if (!serviceCards.length) return;
-  
-  serviceCardWidth = serviceCards[0].offsetWidth + 30; // card width + gap
-  const offset = -servicesCurrentIndex * serviceCardWidth;
-  servicesTrack.style.transform = `translateX(${offset}px)`;
-}
-
-function scrollServices(direction) {
-  if (servicesIsAnimating) return;
-  servicesIsAnimating = true;
-  
-  servicesCurrentIndex += direction;
-  
-  // Infinite loop logic
-  if (servicesCurrentIndex >= services.length) {
-    servicesCurrentIndex = 0;
-    // Jump to duplicate set without animation
-    servicesTrack.style.transition = 'none';
-    servicesTrack.style.transform = `translateX(0px)`;
-    
-    // Force reflow
-    void servicesTrack.offsetWidth;
-    
-    // Restore transition
-    servicesTrack.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-  }
-  
-  if (servicesCurrentIndex < 0) {
-    servicesCurrentIndex = services.length - 1;
-    // Jump to duplicate set at the end
-    const jumpOffset = -services.length * serviceCardWidth;
-    servicesTrack.style.transition = 'none';
-    servicesTrack.style.transform = `translateX(${jumpOffset}px)`;
-    
-    // Force reflow
-    void servicesTrack.offsetWidth;
-    
-    // Restore transition
-    servicesTrack.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-  }
-  
-  updateServicesCarousel();
-  
-  // Reset animation flag after transition
-  setTimeout(() => {
-    servicesIsAnimating = false;
-  }, 500);
-}
-
-// ==================== PROJECTS SECTION LOGIC ====================
-const projects = [
-  {
-    title: "Friend's Portfolio",
-    imageName: "friend-portfolio.jpg",
-    link: "https://www.figma.com/design/nygRfTqoQOtLKCYIMri3kq/Hassan-Ali-Portfolio?node-id=4197-2&t=BnSx5bqZtTUolo1W-1"
-  },
-  {
-    title: "Food App",
-    imageName: "food-app.jpg",
-    link: "https://www.figma.com/design/gGNoz3cJn51dNnxGoXalhA/Foods?node-id=0-1&t=aEvm8ceEA0Nll3s6-1"
-  },
-  {
-    title: "My Portfolio",
-    imageName: "my-portfolio.jpg",
-    link: "https://www.figma.com/design/eumb6reWfEw5whNKfMNP1a/Farooq-portfolio?node-id=175-7&t=wSxjDKjrwSJ8aMAt-1"
-  },
-  {
-    title: "Bike Shopping App",
-    imageName: "bike-shopping-app.jpg",
-    link: "https://www.figma.com/design/erXw5uf6pbzMfY8ks2PObm/Bike-Shopping-App?node-id=1-40&t=qQ9K57BWiSxRPAXb-1"
-  },
-  {
-    title: "Company Website",
-    imageName: "company-website.jpg",
-    link: "https://www.figma.com/design/uljLWbcGlLvr9khAwIZhK0/snovatek?node-id=2395-3&t=Nw438LQkEffP6oEc-1"
-  }
-];
-
-let projectsCarousel;
-let projectsTrack;
-let projectCards;
-let projectCardWidth;
-let projectsCurrentIndex = 0;
-let projectsIsAnimating = false;
-
-function initProjects() {
-  projectsCarousel = document.querySelector('.projects-carousel');
-  projectsTrack = document.getElementById('projectsTrack');
-  
-  // Clear and build the track with duplicated items for seamless looping
-  projectsTrack.innerHTML = '';
-  
-  // Add extra copies at beginning and end for seamless looping
-  const projectsToShow = [...projects, ...projects, ...projects];
-  
-  projectsToShow.forEach((project, index) => {
-    const card = document.createElement('div');
-    card.className = 'project-card';
-    card.innerHTML = `
-      <div class="project-image">
-        <img src="https://raw.githubusercontent.com/M-Farooq-Ahmad/your-repo-name/main/${project.imageName}" 
-             alt="${project.title}" 
-             onerror="this.src='https://via.placeholder.com/400x200/8e44ad/ffffff?text=${encodeURIComponent(project.title)}'">
-      </div>
-      <div class="project-content">
-        <h3>${project.title}</h3>
-        <button class="view-details-btn" onclick="window.open('${project.link}', '_blank'); event.stopPropagation();">View Details</button>
-      </div>
-    `;
-    card.onclick = () => {
-      window.open(project.link, '_blank');
-    };
-    projectsTrack.appendChild(card);
-  });
-  
-  projectCards = document.querySelectorAll('.project-card');
-  updateProjectsCarousel();
-}
-
-function updateProjectsCarousel() {
-  if (!projectCards.length) return;
-  
-  projectCardWidth = projectCards[0].offsetWidth + 30; // card width + gap
-  const offset = -projectsCurrentIndex * projectCardWidth;
-  projectsTrack.style.transform = `translateX(${offset}px)`;
-}
-
-function scrollProjects(direction) {
-  if (projectsIsAnimating) return;
-  projectsIsAnimating = true;
-  
-  projectsCurrentIndex += direction;
-  
-  // Infinite loop logic
-  if (projectsCurrentIndex >= projects.length) {
-    projectsCurrentIndex = 0;
-    // Jump to duplicate set without animation
-    projectsTrack.style.transition = 'none';
-    projectsTrack.style.transform = `translateX(0px)`;
-    
-    // Force reflow
-    void projectsTrack.offsetWidth;
-    
-    // Restore transition
-    projectsTrack.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-  }
-  
-  if (projectsCurrentIndex < 0) {
-    projectsCurrentIndex = projects.length - 1;
-    // Jump to duplicate set at the end
-    const jumpOffset = -projects.length * projectCardWidth;
-    projectsTrack.style.transition = 'none';
-    projectsTrack.style.transform = `translateX(${jumpOffset}px)`;
-    
-    // Force reflow
-    void projectsTrack.offsetWidth;
-    
-    // Restore transition
-    projectsTrack.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-  }
-  
-  updateProjectsCarousel();
-  
-  // Reset animation flag after transition
-  setTimeout(() => {
-    projectsIsAnimating = false;
-  }, 500);
-}
-
-// ==================== TOUCH SWIPE SUPPORT ====================
-let touchStartX = 0;
-let touchEndX = 0;
-let isSwiping = false;
-
-function handleTouchStart(e) {
-  touchStartX = e.changedTouches[0].screenX;
-  isSwiping = true;
-}
-
-function handleTouchMove(e) {
-  if (!isSwiping) return;
-  e.preventDefault();
-}
-
-function handleTouchEnd(e) {
-  if (!isSwiping) return;
-  touchEndX = e.changedTouches[0].screenX;
-  handleSwipe();
-  isSwiping = false;
-}
-
-function handleSwipe() {
-  const swipeThreshold = 50;
-  const diff = touchStartX - touchEndX;
-  
-  if (Math.abs(diff) > swipeThreshold) {
-    if (diff > 0) {
-      // Swipe left - next
-      scrollServices(1);
-      scrollProjects(1);
-    } else {
-      // Swipe right - previous
-      scrollServices(-1);
-      scrollProjects(-1);
-    }
-  }
-}
-
-// ==================== INITIALIZE EVERYTHING ====================
-document.addEventListener('DOMContentLoaded', function() {
-  // Initialize both sections
-  initServices();
-  initProjects();
-  
-  // Add touch event listeners for mobile swipe
-  const servicesTrack = document.getElementById('servicesTrack');
-  const projectsTrack = document.getElementById('projectsTrack');
-  
-  servicesTrack.addEventListener('touchstart', handleTouchStart);
-  servicesTrack.addEventListener('touchmove', handleTouchMove);
-  servicesTrack.addEventListener('touchend', handleTouchEnd);
-  
-  projectsTrack.addEventListener('touchstart', handleTouchStart);
-  projectsTrack.addEventListener('touchmove', handleTouchMove);
-  projectsTrack.addEventListener('touchend', handleTouchEnd);
-  
-  // Handle window resize
-  window.addEventListener('resize', function() {
-    updateServicesCarousel();
-    updateProjectsCarousel();
-  });
-});
-
-// Prevent context menu on swipe
-document.addEventListener('contextmenu', function(e) {
-  if (isSwiping) {
-    e.preventDefault();
-  }
-});
-</script>
-
-</body>
-</html>
+// SERVICES CIRCULAR SCROLL
+let serviceIndex = 0;
+const serviceContainer = document.getElementById("serviceContainer");
+function scrollService(dir){
+  const cards = serviceContainer.children.length;
+  serviceIndex = (serviceIndex + dir + cards) % cards
