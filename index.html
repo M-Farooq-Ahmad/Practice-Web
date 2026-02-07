@@ -15,7 +15,7 @@
   --light:#ffffff;
   --gray:#555;
   --transition: all 0.3s ease;
-  --arrow-color: #000000;
+  --arrow-color: #000;
   --arrow-hover: #0000ff;
 }
 
@@ -120,7 +120,6 @@ nav a:hover{ color:var(--primary); }
   min-height: 80vh;
   gap: 60px;
 }
-
 .hero-text{ flex: 1; }
 .hero-text h1{ font-size:48px; line-height: 1.2; }
 .hero-text h2{ font-size:36px; margin:10px 0; }
@@ -135,94 +134,95 @@ nav a:hover{ color:var(--primary); }
 .bar{ background:#eee; height:10px; border-radius:10px; margin-top:8px; }
 .bar div{ height:10px; background:var(--primary); border-radius:10px; }
 
-/* NEW CAROUSEL COMMON STYLES (Services & Projects) */
-.carousel-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 20px;
+/* SHARED CAROUSEL CSS */
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
 }
 
 .carousel-viewport {
-  overflow: hidden;
-  width: 100%;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 10px;
 }
 
 .carousel-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  gap: 20px;
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 20px;
 }
 
 .arrow {
-  background: none;
-  border: none;
-  font-size: 40px;
-  color: var(--arrow-color);
-  cursor: pointer;
-  transition: color 0.3s;
-  z-index: 10;
+    background: none;
+    border: none;
+    font-size: 35px;
+    color: var(--arrow-color);
+    cursor: pointer;
+    transition: color 0.3s;
+    user-select: none;
+    z-index: 5;
 }
 
 .arrow:hover { color: var(--arrow-hover); }
 
-/* SERVICES CAROUSEL SPECIFIC */
+/* SERVICE CARDS */
 .service-box {
-  min-width: calc(33.333% - 13.5px);
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  padding: 30px 20px;
-  text-align: center;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-  flex-shrink: 0;
-  text-decoration: none;
-  color: inherit;
+    flex: 0 0 calc(33.333% - 13.5px); /* Desktop: 3 items */
+    border: 1px solid #eee;
+    padding: 40px 25px;
+    border-radius: 16px;
+    text-align: center;
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 280px;
 }
 
-.service-box h3 { color: var(--primary); margin-bottom: 10px; }
-.service-box p { font-size: 14px; color: #666; }
+.service-box h3 { color: var(--primary); margin-bottom: 15px; font-size: 20px; }
+.service-box p { font-size: 14px; color: #666; transition: var(--transition); }
 
-/* Focus/Hover for Services */
 .service-box:hover {
-  background-color: var(--primary);
+    background: var(--primary);
+    transform: translateY(-5px);
 }
 .service-box:hover h3, .service-box:hover p { color: #fff; }
 
-/* PROJECTS CAROUSEL SPECIFIC */
+/* PROJECT CARDS */
 .project-card {
-  min-width: calc(33.333% - 13.5px);
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  overflow: hidden;
-  text-align: center;
-  transition: filter 0.3s;
-  flex-shrink: 0;
-  background: #fff;
+    flex: 0 0 calc(33.333% - 13.5px); /* Desktop: 3 items */
+    border: 1px solid #eee;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    transition: var(--transition);
+    text-align: center;
 }
 
-.project-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
+.project-img-container {
+    width: 100%;
+    height: 220px; /* Increased height */
+    overflow: hidden;
+    background: #f9f9f9;
 }
 
-.project-info { padding: 20px; }
-.project-info h3 { font-size: 18px; margin-bottom: 15px; }
-
-.view-details-btn {
-  background: var(--primary);
-  color: #fff;
-  padding: 8px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 14px;
-  display: inline-block;
+.project-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-/* Hover Invert Effect for Projects */
+.project-content { padding: 25px 15px; }
+.project-content h3 { font-size: 19px; margin-bottom: 20px; font-weight: 600; }
+
 .project-card:hover {
-  filter: invert(1);
+    filter: invert(1);
+    transform: translateY(-5px);
 }
 
 /* CONTACT SECTION */
@@ -239,7 +239,7 @@ textarea{ resize:none; height:150px; }
 
 footer{ background:var(--primary); color:#fff; text-align:center; padding:30px; margin-top: 50px; }
 
-/* RESPONSIVE */
+/* RESPONSIVE DESIGN */
 @media(max-width:992px){
     .hero-text h1 { font-size: 38px; }
     .hero-img img { max-width: 350px; }
@@ -254,12 +254,14 @@ footer{ background:var(--primary); color:#fff; text-align:center; padding:30px; 
   .hero-img img { max-width: 300px; }
   .contact-box{ grid-template-columns:1fr; }
   
-  /* Carousel Mobile Overrides */
+  /* Carousel Mobile */
   .arrow { display: none; }
-  .service-box, .project-card { min-width: 100%; }
+  .service-box, .project-card { 
+      flex: 0 0 100%; /* Mobile: 1 item */
+  }
+  .carousel-viewport { overflow-x: auto; scroll-snap-type: x mandatory; margin: 0; }
   .carousel-track { gap: 0; }
-  .carousel-viewport { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
-  .service-box, .project-card { scroll-snap-align: center; }
+  .service-box, .project-card { scroll-snap-align: center; border-radius: 0; border: none; border-bottom: 1px solid #eee;}
 }
 </style>
 </head>
@@ -311,9 +313,9 @@ footer{ background:var(--primary); color:#fff; text-align:center; padding:30px; 
 
 <section id="services">
   <div class="container">
-    <h2 class="section-title">The Services I Provide</h2>
-    <div class="carousel-container">
-      <button class="arrow left-arrow" onclick="moveCarousel('services', -1)">&#10094;</button>
+    <h2 class="section-title">My Services</h2>
+    <div class="carousel-wrapper">
+      <button class="arrow" onclick="moveSlide('services', -1)">&#10094;</button>
       <div class="carousel-viewport" id="services-viewport">
         <div class="carousel-track" id="services-track">
           <a href="mailto:engrmfarooqahmad@gmail.com" class="service-box">
@@ -338,7 +340,7 @@ footer{ background:var(--primary); color:#fff; text-align:center; padding:30px; 
           </a>
         </div>
       </div>
-      <button class="arrow right-arrow" onclick="moveCarousel('services', 1)">&#10095;</button>
+      <button class="arrow" onclick="moveSlide('services', 1)">&#10095;</button>
     </div>
   </div>
 </section>
@@ -346,48 +348,48 @@ footer{ background:var(--primary); color:#fff; text-align:center; padding:30px; 
 <section id="portfolio">
   <div class="container">
     <h2 class="section-title">Latest Projects</h2>
-    <div class="carousel-container">
-      <button class="arrow left-arrow" onclick="moveCarousel('projects', -1)">&#10094;</button>
+    <div class="carousel-wrapper">
+      <button class="arrow" onclick="moveSlide('projects', -1)">&#10094;</button>
       <div class="carousel-viewport" id="projects-viewport">
         <div class="carousel-track" id="projects-track">
           <div class="project-card">
-            <img src="https://github.com/M-Farooq-Ahmad/images/raw/main/friend.jpg" alt="Friend's Portfolio">
-            <div class="project-info">
+            <div class="project-img-container"><img src="https://github.com/M-Farooq-Ahmad/images/raw/main/friend.jpg" alt="Friend's Portfolio"></div>
+            <div class="project-content">
               <h3>Friend's Portfolio</h3>
-              <a href="https://www.figma.com/design/nygRfTqoQOtLKCYIMri3kq/Hassan-Ali-Portfolio?node-id=4197-2&t=BnSx5bqZtTUolo1W-1" target="_blank" class="view-details-btn">View Details</a>
+              <a href="https://www.figma.com/design/nygRfTqoQOtLKCYIMri3kq/Hassan-Ali-Portfolio?node-id=4197-2&t=BnSx5bqZtTUolo1W-1" target="_blank" class="btn">View Details</a>
             </div>
           </div>
           <div class="project-card">
-            <img src="https://github.com/M-Farooq-Ahmad/images/raw/main/food.jpg" alt="Food App">
-            <div class="project-info">
+            <div class="project-img-container"><img src="https://github.com/M-Farooq-Ahmad/images/raw/main/food.jpg" alt="Food App"></div>
+            <div class="project-content">
               <h3>Food App</h3>
-              <a href="https://www.figma.com/design/gGNoz3cJn51dNnxGoXalhA/Foods?node-id=0-1&t=aEvm8ceEA0Nll3s6-1" target="_blank" class="view-details-btn">View Details</a>
+              <a href="https://www.figma.com/design/gGNoz3cJn51dNnxGoXalhA/Foods?node-id=0-1&t=aEvm8ceEA0Nll3s6-1" target="_blank" class="btn">View Details</a>
             </div>
           </div>
           <div class="project-card">
-            <img src="https://github.com/M-Farooq-Ahmad/images/raw/main/myportfolio.jpg" alt="My Portfolio">
-            <div class="project-info">
+            <div class="project-img-container"><img src="https://github.com/M-Farooq-Ahmad/images/raw/main/myportfolio.jpg" alt="My Portfolio"></div>
+            <div class="project-content">
               <h3>My Portfolio</h3>
-              <a href="https://www.figma.com/design/eumb6reWfEw5whNKfMNP1a/Farooq-portfolio?node-id=175-7&t=wSxjDKjrwSJ8aMAt-1" target="_blank" class="view-details-btn">View Details</a>
+              <a href="https://www.figma.com/design/eumb6reWfEw5whNKfMNP1a/Farooq-portfolio?node-id=175-7&t=wSxjDKjrwSJ8aMAt-1" target="_blank" class="btn">View Details</a>
             </div>
           </div>
           <div class="project-card">
-            <img src="https://github.com/M-Farooq-Ahmad/images/raw/main/bike%20shopping%20app.jpg" alt="Bike Shopping App">
-            <div class="project-info">
+            <div class="project-img-container"><img src="https://github.com/M-Farooq-Ahmad/images/raw/main/bike%20shopping%20app.jpg" alt="Bike Shopping App"></div>
+            <div class="project-content">
               <h3>Bike Shopping App</h3>
-              <a href="https://www.figma.com/design/erXw5uf6pbzMfY8ks2PObm/Bike-Shopping-App?node-id=1-40&t=qQ9K57BWiSxRPAXb-1" target="_blank" class="view-details-btn">View Details</a>
+              <a href="https://www.figma.com/design/erXw5uf6pbzMfY8ks2PObm/Bike-Shopping-App?node-id=1-40&t=qQ9K57BWiSxRPAXb-1" target="_blank" class="btn">View Details</a>
             </div>
           </div>
           <div class="project-card">
-            <img src="https://github.com/M-Farooq-Ahmad/images/raw/main/company.jpg" alt="Company Web">
-            <div class="project-info">
+            <div class="project-img-container"><img src="https://github.com/M-Farooq-Ahmad/images/raw/main/company.jpg" alt="Company Web"></div>
+            <div class="project-content">
               <h3>Company Web</h3>
-              <a href="https://www.figma.com/design/uljLWbcGlLvr9khAwIZhK0/snovatek?node-id=2395-3&t=Nw438LQkEffP6oEc-1" target="_blank" class="view-details-btn">View Details</a>
+              <a href="https://www.figma.com/design/uljLWbcGlLvr9khAwIZhK0/snovatek?node-id=2395-3&t=Nw438LQkEffP6oEc-1" target="_blank" class="btn">View Details</a>
             </div>
           </div>
         </div>
       </div>
-      <button class="arrow right-arrow" onclick="moveCarousel('projects', 1)">&#10095;</button>
+      <button class="arrow" onclick="moveSlide('projects', 1)">&#10095;</button>
     </div>
   </div>
 </section>
@@ -440,40 +442,65 @@ function sendMail(){
   let name=document.getElementById("name").value;
   let email=document.getElementById("email").value;
   let message=document.getElementById("message").value;
-  let gmailURL= "https://mail.google.com/mail/?view=cm&fs=1"+
-    "&to=engrmfarooqahmad@gmail.com"+
-    "&su=Portfolio Contact from "+encodeURIComponent(name)+
-    "&body="+encodeURIComponent("Name: "+name+"\nEmail: "+email+"\n\n"+message);
+  let gmailURL= "https://mail.google.com/mail/?view=cm&fs=1&to=engrmfarooqahmad@gmail.com&su=Portfolio Contact from "+encodeURIComponent(name)+"&body="+encodeURIComponent("Name: "+name+"\nEmail: "+email+"\n\n"+message);
   window.open(gmailURL,"_blank");
 }
 
-/* CAROUSEL LOGIC */
-let servicesIndex = 0;
-let projectsIndex = 0;
+/* INFINITE LOOP CAROUSEL LOGIC */
+const setupCarousel = (id) => {
+    const track = document.getElementById(id + '-track');
+    const originalItems = Array.from(track.children);
+    
+    // Clone items for infinite effect
+    originalItems.forEach(item => {
+        const clone = item.cloneNode(true);
+        track.appendChild(clone);
+    });
+    originalItems.forEach(item => {
+        const clone = item.cloneNode(true);
+        track.prepend(clone);
+    });
 
-function moveCarousel(type, direction) {
-  const track = document.getElementById(type + '-track');
-  const items = track.children;
-  const totalItems = items.length;
-  let currentIndex;
+    let index = originalItems.length;
+    let isTransitioning = false;
 
-  if (type === 'services') {
-    servicesIndex = (servicesIndex + direction + totalItems) % totalItems;
-    currentIndex = servicesIndex;
-  } else {
-    projectsIndex = (projectsIndex + direction + totalItems) % totalItems;
-    currentIndex = projectsIndex;
-  }
+    const updatePosition = (smooth = true) => {
+        const itemWidth = track.children[0].offsetWidth + 20;
+        track.style.transition = smooth ? 'transform 0.5s ease' : 'none';
+        track.style.transform = `translateX(-${index * itemWidth}px)`;
+    };
 
-  // Calculate percentage based on desktop (3 items)
-  // For a smooth loop, we move by 1/3rd increments
-  const slideWidth = items[0].offsetWidth + 20; 
-  track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-  
-  // Logic for Infinite Loop (Resetting positions)
-  if (currentIndex > totalItems - 3 && window.innerWidth > 768) {
-     // Optional: Add cloning for true infinite loop if needed
-  }
+    // Initial position
+    window.addEventListener('load', () => updatePosition(false));
+    window.addEventListener('resize', () => updatePosition(false));
+
+    return {
+        move: (dir) => {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            index += dir;
+            updatePosition(true);
+
+            track.addEventListener('transitionend', () => {
+                isTransitioning = false;
+                if (index >= originalItems.length * 2) {
+                    index = originalItems.length;
+                    updatePosition(false);
+                } else if (index < originalItems.length) {
+                    index = originalItems.length * 2 - 1;
+                    updatePosition(false);
+                }
+            }, { once: true });
+        }
+    };
+};
+
+const servicesCarousel = setupCarousel('services');
+const projectsCarousel = setupCarousel('projects');
+
+function moveSlide(type, dir) {
+    if (type === 'services') servicesCarousel.move(dir);
+    if (type === 'projects') projectsCarousel.move(dir);
 }
 </script>
 
