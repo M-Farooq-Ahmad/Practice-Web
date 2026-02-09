@@ -11,7 +11,7 @@
 <style>
 :root{
   --primary:#8e44ad;
-  --secondary: #3498db; /* Blue for hover */
+  --secondary: #3498db; 
   --dark:#222;
   --light:#ffffff;
   --gray:#555;
@@ -119,41 +119,19 @@ nav a:hover{ color:var(--primary); }
   min-height: 80vh;
   gap: 60px;
 }
-
 .hero-text{ flex: 1; }
 .hero-text h1{ font-size:48px; line-height: 1.2; }
 .hero-text h2{ font-size:36px; margin:10px 0; }
 .hero-text h2 span{ color:var(--primary); }
 .hero-text p{ color:var(--gray); margin:20px 0 35px; font-size: 18px; }
-
-.hero-img{
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.hero-img img{
-  width: 100%;
-  max-width: 450px;
-  height: auto;
-  border-radius: 30px;
-  transition: var(--transition);
-}
+.hero-img{ flex: 1; display: flex; justify-content: flex-end; }
+.hero-img img{ width: 100%; max-width: 450px; height: auto; border-radius: 30px; transition: var(--transition); }
 
 /* SKILLS */
 .skills{ max-width:700px; margin:auto; }
 .skill{ margin-bottom:20px; font-weight: 500; }
-.bar{
-  background:#eee;
-  height:10px;
-  border-radius:10px;
-  margin-top:8px;
-}
-.bar div{
-  height:10px;
-  background:var(--primary);
-  border-radius:10px;
-}
+.bar{ background:#eee; height:10px; border-radius:10px; margin-top:8px; }
+.bar div{ height:10px; background:var(--primary); border-radius:10px; }
 
 /* CAROUSEL COMMON STYLES */
 .carousel-container {
@@ -166,122 +144,86 @@ nav a:hover{ color:var(--primary); }
 .slider-wrapper {
     overflow: hidden;
     width: 100%;
-    padding: 20px 0; /* Prevents upward animation clipping */
+    padding: 30px 0; /* Extra space for upward animation */
 }
 
 .slider-track {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .arrow {
     background: none;
     border: none;
-    font-size: 2rem;
+    font-size: 2.5rem;
     cursor: pointer;
     color: black;
-    transition: color 0.3s;
+    transition: color 0.3s, transform 0.2s;
     z-index: 10;
     padding: 10px;
 }
 
-.arrow:hover { color: var(--secondary); }
+.arrow:hover { color: var(--secondary); transform: scale(1.1); }
 
-/* NEW SERVICES SECTION */
-.service-item {
+/* SERVICES & PROJECTS CARDS */
+.item-box {
     min-width: 33.33%;
     padding: 0 15px;
     box-sizing: border-box;
 }
 
-.service-card-new {
+.card {
     border: 1px solid #eee;
     padding: 40px 30px;
     border-radius: 16px;
     background: #fff;
     cursor: pointer;
     text-align: center;
-    transition: transform 0.3s ease, background 0.3s, color 0.3s;
-    height: 100%;
+    transition: transform 0.3s ease, background 0.3s, color 0.3s, filter 0.3s;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.service-card-new h3 { margin-bottom: 10px; color: var(--primary); }
-.service-card-new p { font-size: 0.9rem; color: #777; transition: color 0.3s; }
-
-.service-card-new:hover {
+/* Specific to Services */
+#services .card h3 { margin-bottom: 10px; color: var(--primary); }
+#services .card p { font-size: 0.9rem; color: #777; transition: color 0.3s; }
+#services .card:hover {
     background: var(--primary);
-    color: #fff;
+    color: #fff !important;
     transform: translateY(-15px);
 }
+#services .card:hover h3, #services .card:hover p { color: #fff; }
 
-.service-card-new:hover h3, .service-card-new:hover p { color: #fff; }
-
-/* NEW PROJECTS SECTION */
-.project-item {
-    min-width: 33.33%;
-    padding: 0 15px;
-    box-sizing: border-box;
-}
-
-.project-card-new {
-    border: 1px solid #eee;
-    border-radius: 16px;
-    background: #fff;
-    overflow: hidden;
-    text-align: center;
-    transition: transform 0.3s ease, filter 0.3s;
-    padding-bottom: 20px;
-}
-
-.project-card-new img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: 1px solid #eee;
-}
-
-.project-card-new h3 { margin: 15px 0; font-size: 1.1rem; }
-
-.project-card-new:hover {
+/* Specific to Projects (Invert Hover) */
+#portfolio .card h3 { margin-bottom: 15px; font-size: 1.2rem; }
+#portfolio .card:hover {
     transform: translateY(-15px);
     filter: invert(1);
+    background: #fff; /* Ensures inversion looks correct */
 }
 
 .view-details {
     display: inline-block;
-    margin-top: 10px;
     background: var(--primary);
     color: #fff;
     padding: 8px 20px;
     border-radius: 20px;
     text-decoration: none;
     font-size: 0.85rem;
-    transition: filter 0.3s;
+    margin-top: 10px;
 }
 
 /* CONTACT SECTION */
-.contact-box{
-  display:grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap:50px;
-  align-items: start;
-}
-
+.contact-box{ display:grid; grid-template-columns: 1.2fr 0.8fr; gap:50px; align-items: start; }
 .contact-info p { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
 .social-links { margin-top: 25px; display: flex; flex-direction: column; gap: 15px; }
 .social-item {
-    text-decoration: none;
-    color: var(--dark);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 18px;
-    border: 1px solid #eee;
-    border-radius: 10px;
-    transition: var(--transition);
-    font-weight: 500;
+    text-decoration: none; color: var(--dark); display: flex; align-items: center; gap: 12px;
+    padding: 12px 18px; border: 1px solid #eee; border-radius: 10px; transition: var(--transition); font-weight: 500;
 }
-
 .social-item i { font-size: 20px; color: var(--primary); }
 .social-item:hover { background: var(--primary); color: #fff; border-color: var(--primary); transform: translateX(5px); }
 .social-item:hover i { color: #fff; }
@@ -299,17 +241,15 @@ footer{ background:var(--primary); color:#fff; text-align:center; padding:30px; 
 
 @media(max-width:768px){
   nav ul{
-    position:absolute; top:70px; right:0; background:#fff; width:100%; flex-direction:column; align-items:center; display:none; padding:30px 0; border-bottom:1px solid #eee; box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+    position:absolute; top:70px; right:0; background:#fff; width:100%; flex-direction:column; align-items:center; display:none; padding:30px 0; border-bottom:1px solid #eee;
   }
   nav ul.active{ display:flex; }
   .hamburger{ display:block; }
-  .hero{ flex-direction: column-reverse; text-align:center; padding: 40px 0; gap: 30px; }
+  .hero{ flex-direction: column-reverse; text-align:center; padding: 40px 0; }
   .hero-img{ justify-content: center; }
-  .hero-img img { max-width: 300px; }
   .contact-box{ grid-template-columns:1fr; }
   
-  /* Carousel Mobile */
-  .service-item, .project-item { min-width: 100%; }
+  .item-box { min-width: 100%; }
   .arrow { display: none; }
 }
 </style>
@@ -364,17 +304,17 @@ footer{ background:var(--primary); color:#fff; text-align:center; padding:30px; 
   <div class="container">
     <h2 class="section-title">The Services I Provide</h2>
     <div class="carousel-container">
-        <button class="arrow" onclick="moveSlide('service-track', -1)">❮</button>
+        <button class="arrow" onclick="rotateSlide('service-track', -1)">❮</button>
         <div class="slider-wrapper">
             <div class="slider-track" id="service-track">
-                <div class="service-item"><div class="service-card-new" onclick="openGmail()"><h3>Web Design</h3><p>As a Talented Web Designer, I specialize in creating visually stunning and user-friendly websites.</p></div></div>
-                <div class="service-item"><div class="service-card-new" onclick="openGmail()"><h3>Graphic Design</h3><p>I am a skilled Graphic Designer offering creative solutions that captivate audiences.</p></div></div>
-                <div class="service-item"><div class="service-card-new" onclick="openGmail()"><h3>UI UX Design</h3><p>User-centered interfaces focusing on aesthetics and high-end functionality.</p></div></div>
-                <div class="service-item"><div class="service-card-new" onclick="openGmail()"><h3>App Design</h3><p>Proficient in crafting sleek and user-friendly mobile experiences for iOS and Android.</p></div></div>
-                <div class="service-item"><div class="service-card-new" onclick="openGmail()"><h3>Linux Administration</h3><p>System management, server configuration, and performance optimization.</p></div></div>
+                <div class="item-box"><div class="card" onclick="openGmail()"><h3>Web Design</h3><p>Specializing in creating visually stunning and user-friendly websites.</p></div></div>
+                <div class="item-box"><div class="card" onclick="openGmail()"><h3>Graphic Design</h3><p>Skilled Graphic Designer offering creative solutions that captivate audiences.</p></div></div>
+                <div class="item-box"><div class="card" onclick="openGmail()"><h3>UI UX Design</h3><p>User-centered interfaces focusing on aesthetics and high-end functionality.</p></div></div>
+                <div class="item-box"><div class="card" onclick="openGmail()"><h3>App Design</h3><p>Crafting sleek mobile experiences for iOS and Android.</p></div></div>
+                <div class="item-box"><div class="card" onclick="openGmail()"><h3>Linux Admin</h3><p>System management, server configuration, and performance optimization.</p></div></div>
             </div>
         </div>
-        <button class="arrow" onclick="moveSlide('service-track', 1)">❯</button>
+        <button class="arrow" onclick="rotateSlide('service-track', 1)">❯</button>
     </div>
   </div>
 </section>
@@ -383,47 +323,17 @@ footer{ background:var(--primary); color:#fff; text-align:center; padding:30px; 
   <div class="container">
     <h2 class="section-title">Latest Projects</h2>
     <div class="carousel-container">
-        <button class="arrow" onclick="moveSlide('project-track', -1)">❮</button>
+        <button class="arrow" onclick="rotateSlide('project-track', -1)">❮</button>
         <div class="slider-wrapper">
             <div class="slider-track" id="project-track">
-                <div class="project-item">
-                    <div class="project-card-new">
-                        <img src="friend-portf" alt="Friend's Portfolio">
-                        <h3>Friend's Portfolio</h3>
-                        <a href="https://www.figma.com/design/nygRfTqoQOtLKCYIMri3kq/Hassan-Ali-Portfolio?node-id=4197-2&t=BnSx5bqZtTUolo1W-1" target="_blank" class="view-details">View Details</a>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-card-new">
-                        <img src="food-app.png" alt="Food App">
-                        <h3>Food App</h3>
-                        <a href="https://www.figma.com/design/gGNoz3cJn51dNnxGoXalhA/Foods?node-id=0-1&t=aEvm8ceEA0Nll3s6-1" target="_blank" class="view-details">View Details</a>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-card-new">
-                        <img src="my-portfolio.png" alt="My Portfolio">
-                        <h3>Portfolio</h3>
-                        <a href="https://www.figma.com/design/eumb6reWfEw5whNKfMNP1a/Farooq-portfolio?node-id=175-7&t=wSxjDKjrwSJ8aMAt-1" target="_blank" class="view-details">View Details</a>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-card-new">
-                        <img src="bike-shopping-app.png" alt="Bike Shopping App">
-                        <h3>Bike Shopping App</h3>
-                        <a href="https://www.figma.com/design/erXw5uf6pbzMfY8ks2PObm/Bike-Shopping-App?node-id=1-40&t=qQ9K57BWiSxRPAXb-1" target="_blank" class="view-details">View Details</a>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-card-new">
-                        <img src="company-website.png" alt="Company Website">
-                        <h3>Company Web</h3>
-                        <a href="https://www.figma.com/design/uljLWbcGlLvr9khAwIZhK0/snovatek?node-id=2395-3&t=Nw438LQkEffP6oEc-1" target="_blank" class="view-details">View Details</a>
-                    </div>
-                </div>
+                <div class="item-box"><div class="card"><h3>Friend's Portfolio</h3><a href="https://www.figma.com/design/nygRfTqoQOtLKCYIMri3kq/Hassan-Ali-Portfolio?node-id=4197-2&t=BnSx5bqZtTUolo1W-1" target="_blank" class="view-details">View Details</a></div></div>
+                <div class="item-box"><div class="card"><h3>Food App</h3><a href="https://www.figma.com/design/gGNoz3cJn51dNnxGoXalhA/Foods?node-id=0-1&t=aEvm8ceEA0Nll3s6-1" target="_blank" class="view-details">View Details</a></div></div>
+                <div class="item-box"><div class="card"><h3>My Portfolio</h3><a href="https://www.figma.com/design/eumb6reWfEw5whNKfMNP1a/Farooq-portfolio?node-id=175-7&t=wSxjDKjrwSJ8aMAt-1" target="_blank" class="view-details">View Details</a></div></div>
+                <div class="item-box"><div class="card"><h3>Bike Shopping App</h3><a href="https://www.figma.com/design/erXw5uf6pbzMfY8ks2PObm/Bike-Shopping-App?node-id=1-40&t=qQ9K57BWiSxRPAXb-1" target="_blank" class="view-details">View Details</a></div></div>
+                <div class="item-box"><div class="card"><h3>Company Web</h3><a href="https://www.figma.com/design/uljLWbcGlLvr9khAwIZhK0/snovatek?node-id=2395-3&t=Nw438LQkEffP6oEc-1" target="_blank" class="view-details">View Details</a></div></div>
             </div>
         </div>
-        <button class="arrow" onclick="moveSlide('project-track', 1)">❯</button>
+        <button class="arrow" onclick="rotateSlide('project-track', 1)">❯</button>
     </div>
   </div>
 </section>
@@ -465,49 +375,43 @@ function sendMail(){
   window.open(gmailURL,"_blank");
 }
 
-/* CAROUSEL LOGIC */
-let serviceIndex = 0;
-let projectIndex = 0;
-
-function moveSlide(trackId, direction) {
+/* CIRCULAR LOOPING LOGIC 
+   Instead of just moving the track, we move the actual elements 
+   to the front or back to create a never-ending loop.
+*/
+function rotateSlide(trackId, direction) {
     const track = document.getElementById(trackId);
-    const items = track.children;
-    const totalItems = items.length;
-    let visibleItems = window.innerWidth > 768 ? 3 : 1;
-    let maxIndex = totalItems - visibleItems;
+    const items = Array.from(track.children);
+    const itemWidth = items[0].offsetWidth;
 
-    if (trackId === 'service-track') {
-        serviceIndex = (serviceIndex + direction + totalItems) % totalItems;
-        if (serviceIndex > maxIndex) serviceIndex = 0;
-        updateTrackPosition(track, serviceIndex, visibleItems);
-    } else {
-        projectIndex = (projectIndex + direction + totalItems) % totalItems;
-        if (projectIndex > maxIndex) projectIndex = 0;
-        updateTrackPosition(track, projectIndex, visibleItems);
-    }
+    // Apply smooth transition
+    track.style.transition = 'transform 0.4s ease-in-out';
+    track.style.transform = `translateX(${-direction * (100 / (window.innerWidth > 768 ? 3 : 1))}%)`;
+
+    // After animation, reposition the elements to loop
+    setTimeout(() => {
+        track.style.transition = 'none';
+        if (direction === 1) {
+            // Moved right: take first element and put at end
+            track.appendChild(items[0]);
+        } else {
+            // Moved left: take last element and put at start
+            track.insertBefore(items[items.length - 1], items[0]);
+        }
+        track.style.transform = 'translateX(0)';
+    }, 400);
 }
 
-function updateTrackPosition(track, index, visibleItems) {
-    const width = 100 / visibleItems;
-    track.style.transform = `translateX(-${index * width}%)`;
-}
-
-/* TOUCH SWIPE FOR MOBILE */
+/* MOBILE TOUCH SWIPE (Circular) */
 let touchStartX = 0;
-let touchEndX = 0;
-
-function handleGesture(trackId) {
-    if (touchEndX < touchStartX) moveSlide(trackId, 1);
-    if (touchEndX > touchStartX) moveSlide(trackId, -1);
-}
-
 document.querySelectorAll('.slider-wrapper').forEach(wrapper => {
     const trackId = wrapper.querySelector('.slider-track').id;
-    wrapper.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
+    wrapper.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX, {passive: true});
     wrapper.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleGesture(trackId);
-    });
+        let touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 50) rotateSlide(trackId, 1);
+        if (touchEndX - touchStartX > 50) rotateSlide(trackId, -1);
+    }, {passive: true});
 });
 </script>
 
