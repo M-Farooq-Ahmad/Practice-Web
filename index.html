@@ -163,7 +163,7 @@ nav a:hover{ color:var(--primary); }
     padding: 10px;
 }
 
-.arrow:hover { color: var(--secondary); transform: scale(1.1); }
+.arrow:hover { color: var(--primary); transform: scale(1.1); }
 
 /* SERVICES & PROJECTS CARDS */
 .item-box {
@@ -319,11 +319,11 @@ footer{ background:var(--primary); color:#fff; text-align:center; padding:30px; 
         <button class="arrow" onclick="rotateSlide('service-track', -1)">❮</button>
         <div class="slider-wrapper">
             <div class="slider-track" id="service-track">
-                <div class="item-box"><div class="card" onclick="openGmail()"><h3>Web Design</h3><p>Specializing in creating visually stunning and user-friendly websites.</p></div></div>
-                <div class="item-box"><div class="card" onclick="openGmail()"><h3>Graphic Design</h3><p>Skilled Graphic Designer offering creative solutions that captivate audiences.</p></div></div>
-                <div class="item-box"><div class="card" onclick="openGmail()"><h3>UI UX Design</h3><p>User-centered interfaces focusing on aesthetics and high-end functionality.</p></div></div>
-                <div class="item-box"><div class="card" onclick="openGmail()"><h3>App Design</h3><p>Crafting sleek mobile experiences for iOS and Android.</p></div></div>
-                <div class="item-box"><div class="card" onclick="openGmail()"><h3>Linux Admin</h3><p>System management, server configuration, and performance optimization.</p></div></div>
+                <div class="item-box"><div class="card"><h3>Web Design</h3><p>Specializing in creating visually stunning and user-friendly websites.</p><button onclick="openGmail()" class="btn" style="margin-top:15px">Order Now</button></div></div>
+                <div class="item-box"><div class="card"><h3>Graphic Design</h3><p>Skilled Graphic Designer offering creative solutions that captivate audiences.</p><button onclick="openGmail()" class="btn" style="margin-top:15px">Order Now</button></div></div>
+                <div class="item-box"><div class="card"><h3>UI UX Design</h3><p>User-centered interfaces focusing on aesthetics and high-end functionality.</p><button onclick="openGmail()" class="btn" style="margin-top:15px">Order Now</button></div></div>
+                <div class="item-box"><div class="card"><h3>App Design</h3><p>Crafting sleek mobile experiences for iOS and Android.</p><button onclick="openGmail()" class="btn" style="margin-top:15px">Order Now</button></div></div>
+                <div class="item-box"><div class="card"><h3>Linux Admin</h3><p>System management, server configuration, and performance optimization.</p><button onclick="openGmail()" class="btn" style="margin-top:15px">Order Now</button></div></div>
             </div>
         </div>
         <button class="arrow" onclick="rotateSlide('service-track', 1)">❯</button>
@@ -387,34 +387,33 @@ function sendMail(){
   window.open(gmailURL,"_blank");
 }
 
-/* CIRCULAR LOOPING LOGIC 
-   Instead of just moving the track, we move the actual elements 
-   to the front or back to create a never-ending loop.
-*/
+/* CIRCULAR INFINITE ROTATION LOGIC */
 function rotateSlide(trackId, direction) {
     const track = document.getElementById(trackId);
     const items = Array.from(track.children);
-    const itemWidth = items[0].offsetWidth;
-
-    // Apply smooth transition
+    
+    // Smooth transition
     track.style.transition = 'transform 0.4s ease-in-out';
-    track.style.transform = `translateX(${-direction * (100 / (window.innerWidth > 768 ? 3 : 1))}%)`;
+    
+    // Calculate distance based on mobile or desktop view
+    const movePercent = (window.innerWidth > 768 ? 33.33 : 100);
+    track.style.transform = `translateX(${-direction * movePercent}%)`;
 
-    // After animation, reposition the elements to loop
+    // Wait for the transition to finish, then snap elements to loop
     setTimeout(() => {
         track.style.transition = 'none';
         if (direction === 1) {
-            // Moved right: take first element and put at end
+            // Forward: Move the first item to the end
             track.appendChild(items[0]);
         } else {
-            // Moved left: take last element and put at start
+            // Backward: Move the last item to the beginning
             track.insertBefore(items[items.length - 1], items[0]);
         }
         track.style.transform = 'translateX(0)';
     }, 400);
 }
 
-/* MOBILE TOUCH SWIPE (Circular) */
+/* MOBILE TOUCH SWIPE */
 let touchStartX = 0;
 document.querySelectorAll('.slider-wrapper').forEach(wrapper => {
     const trackId = wrapper.querySelector('.slider-track').id;
